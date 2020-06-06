@@ -1,1 +1,1 @@
-web: npm start
+web: yarn knex:migrate && yarn knex:seed && yarn start
