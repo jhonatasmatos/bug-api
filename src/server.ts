@@ -10,4 +10,4 @@ app.use(cors());
 app.use(express.json());
 app.use(routes);
 
-app.listen(environment.server.port)
+app.listen(environment.port)
