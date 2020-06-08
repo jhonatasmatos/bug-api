@@ -1,1 +1,1 @@
-web: yarn knex:migrate-prod && yarn knex:seed-pro && yarn start
+web: yarn start
