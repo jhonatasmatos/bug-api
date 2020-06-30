@@ -1,17 +1,33 @@
-import { getCustomRepository, getRepository } from 'typeorm';
-import BugsRepository from '../repositories/BugsRepository';
+import { getRepository } from 'typeorm';
 
 import Bug from '../models/Bug';
 
 interface Request {
   title: string;
-  type: 'income' | 'outcome';
-  value: number;
-  category: string;
+  description: string;
+  reporter: string;
+  status: 'open' | 'in progress' | 'close';
 }
-
 class CreateBugService {
-  public async execute(): Promise<Bug> {}
+  public async execute({
+    title,
+    description,
+    reporter,
+    status,
+  }: Request): Promise<Bug> {
+    const bugsRepository = getRepository(Bug);
+
+    const bug = bugsRepository.create({
+      title,
+      description,
+      reporter,
+      status,
+    });
+
+    await bugsRepository.save(bug);
+
+    return bug;
+  }
 }
 
 export default CreateBugService;

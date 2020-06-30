@@ -21,7 +21,7 @@ class Bug {
   reporter: string;
 
   @Column()
-  status: string;
+  status: 'open' | 'in progress' | 'close';
 
   @CreateDateColumn()
   created_at: Date;
